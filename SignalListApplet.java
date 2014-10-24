@@ -1,5 +1,3 @@
-package homework9;
-
 import javax.swing.JApplet;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -10,9 +8,18 @@ import java.awt.TextArea;
 import javax.swing.JFrame;
 
 public class SignalListApplet extends JApplet {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private static JTextField textField; // Let user input a integer to insert at head.
+	private static JTextField textField_1; // Let user input a integer to insert at tail.
+	private static JTextField textField_2; // Let user input a integer to search the location in this list.
+	JButton btnNewButton = new JButton("\u78BA\u5B9A"); // click it can insert a integer to the head.
+	JButton btnNewButton_1 = new JButton("\u78BA\u5B9A\r\n"); // click it can insert a integer to the tail.
+	JButton btnNewButton_2 = new JButton("\u522A\u9664\u958B\u982D"); // click it can remove a integer from the head.
+	JButton btnNewButton_3 = new JButton("\u522A\u9664\u5C3E\u7AEF"); // click it can remove a integer from the tail.
+	JButton btnNewButton_4 = new JButton("\u5168\u90E8\u6E05\u9664"); // click it can remove all integer in this list.
+	JButton btnNewButton_5 = new JButton("\u986F\u793A\u76EE\u524D\u93C8\u7D50"); // click it can display the list currently.
+	JButton btnNewButton_6 = new JButton("\u78BA\u5B9A\r\n"); // click it can search a integer which user input in textField_2, and display the result in textArea_1.
+	static JTextArea textArea; // display all the action that click any button.
+	static TextArea textArea_1; // display the search result when you click btnNewButton_6.
 	
 		// In order to run standalone as a standalone application, we add the main method.
 	public static void main(String[] args) {
@@ -21,7 +28,7 @@ public class SignalListApplet extends JApplet {
 		// Create an instance of the applet.
 		SignalListApplet applet = new SignalListApplet();
 		// Add the applet to the frame.
-		frame.getContentPane().add(applet);
+		frame.add(applet);
 		// Display the frame.
 		frame.setSize(520,450);
 		frame.setLocationRelativeTo(null);
@@ -62,27 +69,27 @@ public class SignalListApplet extends JApplet {
 		getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
-		JButton btnNewButton = new JButton("\u78BA\u5B9A");
+		
 		btnNewButton.setBounds(282, 31, 87, 23);
 		getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("\u78BA\u5B9A\r\n");
+		
 		btnNewButton_1.setBounds(282, 59, 87, 23);
 		getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("\u522A\u9664\u958B\u982D");
+		
 		btnNewButton_2.setBounds(10, 93, 87, 23);
 		getContentPane().add(btnNewButton_2);
 		
-		JButton btnNewButton_3 = new JButton("\u522A\u9664\u5C3E\u7AEF");
+		
 		btnNewButton_3.setBounds(107, 93, 87, 23);
 		getContentPane().add(btnNewButton_3);
 		
-		JButton btnNewButton_4 = new JButton("\u5168\u90E8\u6E05\u9664");
+		
 		btnNewButton_4.setBounds(204, 93, 87, 23);
 		getContentPane().add(btnNewButton_4);
 		
-		JButton btnNewButton_5 = new JButton("\u986F\u793A\u76EE\u524D\u93C8\u7D50");
+		
 		btnNewButton_5.setBounds(301, 93, 139, 23);
 		getContentPane().add(btnNewButton_5);
 		
@@ -95,11 +102,11 @@ public class SignalListApplet extends JApplet {
 		getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 		
-		JButton btnNewButton_6 = new JButton("\u78BA\u5B9A\r\n");
+		
 		btnNewButton_6.setBounds(239, 122, 87, 23);
 		getContentPane().add(btnNewButton_6);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setEditable(false);
 		textArea.setBounds(336, 121, 166, 25);
 		getContentPane().add(textArea);
@@ -112,7 +119,7 @@ public class SignalListApplet extends JApplet {
 		scrollPane.setBounds(10, 405, 359, -221);
 		getContentPane().add(scrollPane);
 		
-		TextArea textArea_1 = new TextArea();
+		textArea_1 = new TextArea();
 		textArea_1.setEnabled(false);
 		textArea_1.setEditable(false);
 		textArea_1.setBounds(10, 172, 440, 227);
