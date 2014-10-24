@@ -148,35 +148,57 @@ public class SignalListApplet extends JApplet {
 					StringBuilder op = new StringBuilder();
 					op.append(textArea_1.getText() + "\n");
 					int number1 = Integer.parseInt(textField.getText());
-    				list.insertAtFront(number1);
-    				op.append("You insert a integer " + number1 + " at head.\n" + list.print());
-    				String op1 = new String(op);
-    				textArea_1.setText(op1);
-    				textField.setText("");
-    			}else{
+					list.insertAtFront(number1);
+					op.append("You insert a integer " + number1 + " at head.\n");
+					String op1 = new String(op);
+					textArea_1.setText(op1);
+					textField.setText("");
+				}else{
 
-    			}
+				}
 			}else if(e.getSource() == btnNewButton_1){
 				if(textField_1.getText().compareTo("") != 0){
 					StringBuilder op = new StringBuilder();
 					op.append(textArea_1.getText() + "\n");
 					int number2 = Integer.parseInt(textField_1.getText());
-    				list.insertAtBack(number2);
-    				op.append("You insert a integer " + number2 + " a tail.\n" + list.print());
-    				String op1 = new String(op);
-    				textArea_1.setText(op1);
-    				textField_1.setText("");
-        		}else{
+					list.insertAtBack(number2);
+					op.append("You insert a integer " + number2 + " a tail.\n");
+					String op1 = new String(op);
+					textArea_1.setText(op1);
+					textField_1.setText("");
+				}else{
 
-    			}
+				}
 			}else if(e.getSource() == btnNewButton_2){
-				textArea_1.setText("btnNewButton_2");
+				StringBuilder op = new StringBuilder();
+				op.append(textArea_1.getText() + "\n");
+				try { 
+					int removedItem = list.removeFromFront();
+					op.append("You remove a integer " + removedItem + " at head.\n");
+				}catch ( EmptyListException emptyListException ){
+					op.append("The list is empty.");
+      			} // end catch
+      			String op1 = new String(op);
+				textArea_1.setText(op1);
 			}else if(e.getSource() == btnNewButton_3){
-				textArea_1.setText("btnNewButton_3");
+				StringBuilder op = new StringBuilder();
+				op.append(textArea_1.getText() + "\n");
+				try { 
+					int removedItem = list.removeFromBack();
+					op.append("You remove a integer " + removedItem + " at tail.\n");
+				}catch ( EmptyListException emptyListException ){
+					op.append("The list is empty.");
+      			} // end catch
+      			String op1 = new String(op);
+				textArea_1.setText(op1);
 			}else if(e.getSource() == btnNewButton_4){
-				textArea_1.setText("btnNewButton_4");
+				
 			}else if(e.getSource() == btnNewButton_5){
-				textArea_1.setText("btnNewButton_5");
+				StringBuilder op = new StringBuilder();
+				op.append(textArea_1.getText() + "\n");
+				op.append(list.print() + "\n");
+				String op1 = new String(op);
+				textArea_1.setText(op1);
 			}else if(e.getSource() == btnNewButton_6){
 				textArea_1.setText("btnNewButton_6");
 			}else{
