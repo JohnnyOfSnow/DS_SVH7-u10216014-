@@ -153,4 +153,37 @@ public class List< T >{
 
       return removedItem; // return removed node data
    }
+
+   public int searchData(T searchElement) throws EmptyListException{
+      int index = 0; // if index 0, not find
+      int count = 1;
+      /*
+      if ( isEmpty() ) // throw exception if List is empty
+         throw new EmptyListException( name );
+      */
+      ListNode< T > current = firstNode;
+      while(current != null){
+         if(current.data == searchElement){
+            index = count;
+            return index;
+         }else{
+            count = count + 1;
+            current = current.nextNode;
+         } // end if
+      } // end while
+      return index;
+   }
+
+   public void removeAllNode() throws EmptyListException{
+      if ( isEmpty() ) // throw exception if List is empty
+         throw new EmptyListException( name );
+
+
+      while(isEmpty() == false){
+         firstNode = firstNode.nextNode;
+      }
+
+      firstNode = lastNode = null;
+      
+   }
 } // end class List< T >
