@@ -1,3 +1,22 @@
+/**
+ * Name: Johnny
+ * ID: U10216014
+ * Data Structure summer vacation homework seven.
+ * Information: 
+ *				The homework is "single linked list for integer".
+ *			You should design a window(JApplet),put the input box let
+ *			user input, set buttons for add integer in the head or tail
+ *			, remove integer from head or tail, clear all node in this list
+ *			, display the list, and search a integer user input in this list.
+ *
+ *			class design:
+ *					--a class (ListNode< T >) define a basic node.
+ *					--a class (List< T >) handle all action in the list.(including add, remove, search data.)
+ *					--a class (EmptyListException) if the list is empty, there will have a exception that needs to deal with.
+ *					--a class (SignalListApplet) define the window(JApplet and component)
+ *						--a inner class (ButtonListener) is for action presentation.
+ *			    
+ */
 import javax.swing.JApplet;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -144,12 +163,13 @@ public class SignalListApplet extends JApplet {
 		@Override
 		public void actionPerformed(ActionEvent e){
 			if(e.getSource() == btnNewButton){
+				textArea.setText("");
 				if(textField.getText().compareTo("") != 0){
 					StringBuilder op = new StringBuilder();
 					op.append(textArea_1.getText() + "\n");
 					int number1 = Integer.parseInt(textField.getText());
 					list.insertAtFront(number1);
-					op.append("You insert a integer " + number1 + " at head.\n");
+					op.append("You insert a integer " + number1 + " at head.");
 					String op1 = new String(op);
 					textArea_1.setText(op1);
 					textField.setText("");
@@ -157,12 +177,13 @@ public class SignalListApplet extends JApplet {
 
 				}
 			}else if(e.getSource() == btnNewButton_1){
+				textArea.setText("");
 				if(textField_1.getText().compareTo("") != 0){
 					StringBuilder op = new StringBuilder();
 					op.append(textArea_1.getText() + "\n");
 					int number2 = Integer.parseInt(textField_1.getText());
 					list.insertAtBack(number2);
-					op.append("You insert a integer " + number2 + " a tail.\n");
+					op.append("You insert a integer " + number2 + " a tail.");
 					String op1 = new String(op);
 					textArea_1.setText(op1);
 					textField_1.setText("");
@@ -170,42 +191,53 @@ public class SignalListApplet extends JApplet {
 
 				}
 			}else if(e.getSource() == btnNewButton_2){
+				textArea.setText("");
 				StringBuilder op = new StringBuilder();
 				op.append(textArea_1.getText() + "\n");
 				try { 
 					int removedItem = list.removeFromFront();
-					op.append("You remove a integer " + removedItem + " at head.\n");
+					op.append("You remove a integer " + removedItem + " at head.");
 				}catch ( EmptyListException emptyListException ){
 					op.append("The list is empty.");
-      			} // end catch
-      			String op1 = new String(op);
+				} // end catch
+				String op1 = new String(op);
 				textArea_1.setText(op1);
 			}else if(e.getSource() == btnNewButton_3){
+				textArea.setText("");
 				StringBuilder op = new StringBuilder();
 				op.append(textArea_1.getText() + "\n");
 				try { 
 					int removedItem = list.removeFromBack();
-					op.append("You remove a integer " + removedItem + " at tail.\n");
+					op.append("You remove a integer " + removedItem + " at tail.");
 				}catch ( EmptyListException emptyListException ){
 					op.append("The list is empty.");
-      			} // end catch
-      			String op1 = new String(op);
+				} // end catch
+				String op1 = new String(op);
 				textArea_1.setText(op1);
 			}else if(e.getSource() == btnNewButton_4){
-				
+				textArea.setText("");
+				textArea_1.setText("Clear all node.");
+				list.removeAllNode();
 			}else if(e.getSource() == btnNewButton_5){
+				textArea.setText("");
 				StringBuilder op = new StringBuilder();
-				op.append(textArea_1.getText() + "\n");
-				op.append(list.print() + "\n");
+				op.append(textArea_1.getText());
+				op.append("\n" + list.print());
 				String op1 = new String(op);
 				textArea_1.setText(op1);
 			}else if(e.getSource() == btnNewButton_6){
-				textArea_1.setText("btnNewButton_6");
+				int searchNumber = Integer.parseInt(textField_2.getText());
+				int result = list.searchData(searchNumber);
+				textField_2.setText("");
+				if(result == 0){
+					textArea.setText(searchNumber + " not find!!");
+				}else{
+					textArea.setText(searchNumber + " in the " + result + " node.");
+				}
 			}else{
 				textArea_1.setText("error!!");
-			}
-			
+			}// end if		
 		}// end method actionPerformed
 	}// end inner class ButtonListener
-}
+}// end class SignalListApplet
 
